@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "//ccastri.github.io/static/css/main.b8d24016.css",
+    "main.js": "//ccastri.github.io/static/js/main.ff880868.js",
+    "static/media/slick.svg": "//ccastri.github.io/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "//ccastri.github.io/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "//ccastri.github.io/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "//ccastri.github.io/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "//ccastri.github.io/index.html",
+    "main.b8d24016.css.map": "//ccastri.github.io/static/css/main.b8d24016.css.map",
+    "main.ff880868.js.map": "//ccastri.github.io/static/js/main.ff880868.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b8d24016.css",
+    "static/js/main.ff880868.js"
+  ]
+}
