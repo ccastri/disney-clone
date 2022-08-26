@@ -1,14 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
+import Row from './Row'
 
 function MainViewer() {
     return (
         <Component>
-            <Wrapper>
+            <Wrapper id='1'>
+                {/* <p>Hello</p> */}
                 <img src="/images/images/viewers-disney.png" />
             </Wrapper>
             <Wrapper>
-                <img src="/images/images/viewers-starwars.png" />
+                <img id="2" src="/images/images/viewers-starwars.png" />
             </Wrapper>
             <Wrapper>
                 <img src="/images/images/viewers-pixar.png" />
@@ -19,7 +21,10 @@ function MainViewer() {
             <Wrapper>
                 <img src="/images/images/viewers-national.png" />
             </Wrapper>
+            {/* <Row /> */}
         </Component>
+
+
     )
 }
 

@@ -33,25 +33,27 @@ export default ImgSlider
 
 const Carousel = styled(Slider)`
    margin-top: 20px;
-
+   
+   
+   
    button{
-    z-index: 1;
-   }
-   ul li button {
-    &:before{
-        font-size: 10px;
-        color: rgb(150,158,171);
-
+       z-index: 1;
     }
-   }
-
-li.slick-active button:before{
-    color: white;
-}
-.slick-list{
-    overflow: visible;
-
-}`
+    ul li button {
+        &:before{
+            font-size: 10px;
+            color: rgb(150,158,171);
+            
+        }
+    }
+    
+    li.slick-active button:before{
+        color: white;
+    }
+    .slick-list{
+        overflow: visible;
+        
+    }`
 const Wrap = styled.div`
 cursor: pointer;
 img{
@@ -67,6 +69,6 @@ img{
         border: 4px solid rgba(249, 249, 249, 0.8);
     }
     
-
+    
 }
 `

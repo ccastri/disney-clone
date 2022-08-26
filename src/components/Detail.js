@@ -47,6 +47,7 @@ export default Detail
 const Container = styled.div`
 min-height:calc(100vh-70px);
 padding: 0 calc(3.5vw + 5px);
+
 `
 
 const Background = styled.div`
@@ -69,6 +70,7 @@ height: 30vh;
 min-height: 170px;
 width: 55vw;
 min-width: 200px;
+margin-top:600px;
 img{
     height: 100%;
     width: 100%;
@@ -133,4 +135,5 @@ font-size: 16px;
 line-height:1.4;
 margin-top:16px; 
 color: rbg(249, 249, 249);
+max-width:500px
 `

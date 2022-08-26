@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { app } from "../firebase.js"
 
 function Header() {
     return (
@@ -35,6 +36,7 @@ function Header() {
 
 
             </NavMenu>
+            <button onClick={() => app.auth.signOut()}>Sign Out</button>
             <UserImg src="/images/images/yo.jpeg" />
 
 
@@ -50,7 +52,7 @@ background : #090B13;
 display: flex;
 align-items: center;
 padding: 0 40px;
-/* overflow: hidden; */
+overflow: hidden;
 `
 
 const Logo = styled.img`
