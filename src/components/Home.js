@@ -19,7 +19,7 @@ function Home() {
         <Container>
             <ImgSlider />
             <MainViewer />
-            <Movies />
+            <Movies fetchUrl={requests.fetchComedyMovies} />
             <Row title="Disney New" fetchUrl={requests.fetchTrending} />
             <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
             <Row title="Comedy New" fetchUrl={requests.fetchComedyMovies} />

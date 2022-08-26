@@ -19,8 +19,7 @@ function Row({ id, title, fetchUrl }) {
         }
         fetchData();
     }, [fetchUrl])
-    // console.log(movies);
-    console.log(movies)
+
 
     const handleClick = (poster) => {
         if (trailerUrl) {
@@ -52,7 +51,7 @@ function Row({ id, title, fetchUrl }) {
             <h2>{title}</h2>
             <div className="row__posters">
 
-                {
+                {movies &&
                     movies.map(poster => (
                         <img
                             key={poster.id}
@@ -62,6 +61,7 @@ function Row({ id, title, fetchUrl }) {
                             alt={poster.name} />
                     )
                     )}
+
             </div>
             {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
         </div>

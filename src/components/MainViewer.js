@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import Row from './Row'
 
 function MainViewer() {
+
     return (
         <Component>
             <Wrapper id='1'>

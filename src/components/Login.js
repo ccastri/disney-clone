@@ -1,12 +1,13 @@
 import 'firebase/auth'
-import React, { useCallback, useContext, useNavigate } from 'react';
+import React, { useCallback, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import { AuthContext } from '../Auth';
 import { app } from '../firebase';
 
 function Login({ history }) {
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const handleLogin = useCallback(
         async e => {
             e.preventDefault();
@@ -25,7 +26,7 @@ function Login({ history }) {
     const { currentUser } = useContext(AuthContext)
 
     if (currentUser) {
-        // navigate("/")
+        navigate("/")
     }
     return (
         <Container>

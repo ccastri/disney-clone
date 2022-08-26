@@ -36,6 +36,7 @@ function Header() {
 
 
             </NavMenu>
+
             <button onClick={() => app.auth.signOut()}>Sign Out</button>
             <UserImg src="/images/images/yo.jpeg" />
 

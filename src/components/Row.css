@@ -1,4 +1,20 @@
 
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px; 
+        
+} img:hover{
+    transform: scale(1.05);
+    border-color: rgba(249, 249, 249, 0.1);
+    box-shadow: 0px 10px 13px -7px #000000, 2px 36px 24px -13px rgba(0,0,0,0.9);
+    transition: all 0.25s 0.17s ease-in-out, opacity 0.25s 0s ease;
+    /* box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
+    rgb(0 0 0 / 73%) 0px 16px 10px -10px; */
+}
+
+  
 .row__posters{
     display: flex;
     overflow-y: hidden;
@@ -14,8 +30,10 @@
     max-height: 100px;
     margin-right: 10px;
     transition: transform 450ms;
-    padding: 0 20px; 
-    border-radius:15px;
+    padding: 0 0; 
+    border-radius:30px;
+    border-color: rgba(249,240,249, 0.8);
+    box-shadow: 0px 10px 13px -7px #000000, 1px 41px 37px -4px #000000;
     
 }
 .row__poster:hover{
