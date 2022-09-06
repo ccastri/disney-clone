@@ -6,7 +6,7 @@ function MainViewer() {
     return (
         <Component>
             <Wrapper id='1'>
-                {/* <p>Hello</p> */}
+
                 <img src="/images/images/viewers-disney.png" />
             </Wrapper>
             <Wrapper>

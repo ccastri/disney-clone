@@ -26,7 +26,7 @@
 }
 .row__poster{
     object-fit: contain;
-    width: 100%;
+    width: 120px;
     max-height: 100px;
     margin-right: 10px;
     transition: transform 450ms;
@@ -48,5 +48,11 @@ min-height: 250px;
 .row{
     margin-left: 20px;
     color: white;
+}
+
+.genres{
+display: flex;
+flex-direction: column;
+width: 18%;
 }
 

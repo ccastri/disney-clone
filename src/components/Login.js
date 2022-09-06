@@ -1,33 +1,44 @@
 import 'firebase/auth'
-import React, { useCallback, useContext } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
-import { AuthContext } from '../Auth';
-import { app } from '../firebase';
+import { UserAuth } from '../Auth';
 
-function Login({ history }) {
+
+function Login() {
 
     const navigate = useNavigate();
-    const handleLogin = useCallback(
-        async e => {
-            e.preventDefault();
-            const { email, password } = e.target.elements;
-            try {
-                await app
-                    .auth()
-                    .signInWithEmailAndPassword(email.value, password.value);
-                history.pushState("/");
+    const [user, setUser] = useState({
+        email: "",
+        password: "",
+        error: ""
+    })
+    console.log(user.email);
 
-            } catch (err) {
-                alert(err)
-            }
-        }, [history]
-    )
-    const { currentUser } = useContext(AuthContext)
 
-    if (currentUser) {
-        navigate("/")
+    const { signIn } = UserAuth();
+
+    const handleChange = (e) => {
+        e.preventDefault();
+        const { name, value } = e.target;
+        e.preventDefault();
+        setUser({ ...user, [name]: value })
     }
+
+    const handleLogin = async e => {
+        e.preventDefault();
+        try {
+            await signIn(user.email, user.password);
+            navigate("/");
+
+        } catch (err) {
+            alert(err)
+            console.log(err)
+        }
+    }
+
+
+
     return (
         <Container>
             <CTA>
@@ -40,19 +51,34 @@ function Login({ history }) {
                 <CTALogoTwo src="/images/images/cta-logo-two.png" />
             </CTA>
             <div>
-                <div>
+                <div className="center">
                     <form onSubmit={handleLogin}>
 
                         <label htmlFor="email">Email
-                            <input type="email" id="email" placeholder='Email' />
+                            <input id="exampleFormControlInput1"
+                                placeholder="Email"
+                                name='email'
+                                value={user.email}
+                                onChange={handleChange} />
                         </label>
                         <label htmlFor="password">Password
-                            <input type="password" id="password" placeholder='Password' />
+                            <input type="password"
+                                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                id="exampleFormControlInput1"
+                                placeholder="Password"
+                                name='password'
+                                value={user.password}
+                                onChange={handleChange} />
                         </label>
-                        <button type="submit">Login</button>
+                        <div className='log-btn'>
+
+                            <button className='signBtn' type="submit">Login</button>
+                        </div>
+
                     </form>
                 </div>
             </div>
+
         </Container>
     )
 }
@@ -64,7 +90,6 @@ const Container = styled.div`
 position: relative;
 height: calc(100vh - 70px);
 display: flex;
-/* align-items:center; */
 justify-content:center;
 
 &:before{

@@ -1,13 +1,78 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
+import movieTrailer from 'movie-trailer';
 import styled from 'styled-components'
+import { useParams } from 'react-router-dom';
+import axios from '../axios';
+
+const API_KEY = "b6b1bea07a686405967578eb7d854781"
+const base_url = "https://api.themoviedb.org/3";
 
 function Detail() {
+    const { id } = useParams();
+    const [movie, setMovie] = useState({
+        id: id
+    });
+    // console.log(id);
+    const [trailerUrl, setTrailerUrl] = useState("")
+    useEffect(() => {
+        async function fetchData() {
+            const request = await axios.get(`${base_url}/movie/${id}?api_key=${API_KEY}&language=en-US`)
+            // console.log(request.data.id)
+            // console.log(id)
+            // const idInt = parseInt(request.data.id)
+
+            // if (id === idInt) {
+            // console.log("goooooo")
+            console.log(request.data.id)
+            setMovie(
+                request.data
+            );
+
+
+            // }
+
+            return request
+        }
+        fetchData();
+    }, [id])
+
+    console.log(movie)
+
+
+    // const handleClick = (poster) => {
+    //     if (trailerUrl) {
+    //         setTrailerUrl("")
+    //     } else {
+    //         movieTrailer(poster?.name || "")
+    //             .then((url) => {
+    //                 // youtube.com/watch?v=XtMThy8QKqU&t=4599s
+    //                 const urlParams = new URLSearchParams(new URL(url).search)
+    //                 setTrailerUrl(urlParams.get("v"));
+    //             })
+    //             .catch((e) => console.log(e));
+
+    //         return poster.id
+    //     }
+    // }
+    //     console.log(handleClick);
+
+    // 
+
+    // const opts = {
+    //     height: "390",
+    //     width: "100%",
+    //     playerVars: {
+    //         autoplay: 1,
+    //     }
+    // };
     return (
+
+
 
         <Container>
             <Background>
 
-                <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2021/07/harry-potter-2397227.jpg?itok=baHTsJ6f" />
+                <img src={movie.poster_path} alt={movie.original_title} />
             </Background>
             <ImageTitle>
                 <img src="https://o.remove.bg/downloads/0fd2d8a4-e51b-4a7c-a7d9-e10729f24454/300-3007988_harry-potter-philosophers-stone-title-hd-png-download-removebg-preview.png" />
@@ -33,10 +98,10 @@ function Detail() {
                 </GroupWatchButton>
             </Controls>
             <Subtitle>
-                2018 · 7m · Family, Fantasy, Magic, Animation
+                {movie.release_date} · {movie.runtime}m
             </Subtitle>
             <Description>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam possimus ullam nobis distinctio harum ut, repudiandae eaque adipisci. Doloremque, blanditiis veniam! Velit, ullam totam at voluptate vel recusandae cum nobis!
+                {movie.overview}
             </Description>
         </Container>
     )

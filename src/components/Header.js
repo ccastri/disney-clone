@@ -1,47 +1,94 @@
-import React from 'react'
+import { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import { app } from "../firebase.js"
+import { UserAuth } from '../Auth'
 
 function Header() {
+
+    const navigate = useNavigate()
+    const { user, logout, googleSignIn } = UserAuth()
+
+    console.log(user);
+
+
+
+    const handleGoogleSignIn = async () => {
+        try {
+            await googleSignIn()
+        } catch (err) {
+            console.log(err)
+
+        }
+    }
+    useEffect(() => {
+        if (user != null) {
+
+            navigate('/')
+        }
+    }, [user]);
+
+    const handleLogout = async () => {
+        try {
+            await logout()
+            navigate("/")
+            console.log("You're logout")
+        } catch (err) {
+            console.log(err);
+
+        }
+
+    }
     return (
+
+
         <Nav>
             <Logo src="/images/images/logo.svg " />
-            <NavMenu>
-                <a>
-                    <img src="/images/images/home-icon.svg" alt="" />
-                    <span>HOME</span>
-                </a>
-                <a>
-                    <img src="/images/images/search-icon.svg" alt="" />
-                    <span>SEARCH</span>
-                </a>
-                <a>
-                    <img src="/images/images/watchlist-icon.svg" alt="" />
-                    <span>WATCHILIST</span>
-                </a>
-                <a>
-                    <img src="/images/images/search-icon.svg" alt="" />
-                    <span>ORIGINALS</span>
-                </a>
-                <a>
-                    <img src="/images/images/movie-icon.svg" alt="" />
-                    <span>MOVIES</span>
-                </a>
-                <a>
-                    <img src="/images/images/series-icon.svg" alt="" />
-                    <span>SERIES</span>
-                </a>
+            {!user ? (
 
-                {/* </UserImg> */}
+                <LoginContainer>
+
+                    <Login onClick={handleGoogleSignIn}>
+                        Login
+                    </Login>
+                </LoginContainer>
+            ) : <>
+
+                <NavMenu>
+                    <a>
+                        <img src="/images/images/home-icon.svg" alt="" />
+                        <span>HOME</span>
+                    </a>
+                    <a>
+                        <img src="/images/images/search-icon.svg" alt="" />
+                        <span>SEARCH</span>
+                    </a>
+                    <a>
+                        <img src="/images/images/watchlist-icon.svg" alt="" />
+                        <span>WATCHILIST</span>
+                    </a>
+                    <a>
+                        <img src="/images/images/search-icon.svg" alt="" />
+                        <span>ORIGINALS</span>
+                    </a>
+                    <a>
+                        <img src="/images/images/movie-icon.svg" alt="" />
+                        <span>MOVIES</span>
+                    </a>
+                    <a>
+                        <img src="/images/images/series-icon.svg" alt="" />
+                        <span>SERIES</span>
+                    </a>
 
 
-            </NavMenu>
-
-            <button onClick={() => app.auth.signOut()}>Sign Out</button>
-            <UserImg src="/images/images/yo.jpeg" />
 
 
-        </Nav>
+                </NavMenu>
+                <UserImg src="/images/images/yo.jpeg" onClick={handleLogout} />
+            </>
+            }
+
+
+        </Nav >
     )
 }
 
@@ -53,11 +100,11 @@ background : #090B13;
 display: flex;
 align-items: center;
 padding: 0 40px;
-overflow: hidden;
+overflow-x: hidden;
 `
 
 const Logo = styled.img`
-    width: 80px;`
+    width: 150px;`
 
 const UserImg = styled.img`
     width: 45px;
@@ -67,7 +114,28 @@ const UserImg = styled.img`
 
     
     `
-
+const LoginContainer = styled.div`
+    flex:1;
+    display: flex;
+    justify-content: flex-end;
+`
+const Login = styled.div`
+{
+border:1px solid #f9f9f9f9;
+padding: 8px 16px;
+border-radius: 4px;
+letter-spacing:1.5px;
+text-transform: uppercase ;
+background-color: rgba(0, 0, 0, 0.6);
+transition: all 0.2 ease 0s;
+cursor: pointer;
+}
+&:hover{
+    background-color: #f9f9f9;
+    color: #000;
+    border-color: transparent;
+}
+`
 const NavMenu = styled.div`
 display: flex ;
 flex: 1;

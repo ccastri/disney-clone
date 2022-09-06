@@ -1,31 +1,40 @@
-import React, { useEffect } from 'react'
+
 import styled from 'styled-components'
-import requests from '../request'
-// import db from '../firebase'
 import ImgSlider from './ImgSlider'
+
+import requests from '../request'
 import MainViewer from './MainViewer'
 import Movies from './Movies'
 import Row from './Row'
-// import db from "../firebase"
+
+// import { UserAuth } from '../Auth'
+
+
 function Home() {
+    // const { user} = UserAuth();
 
-    useEffect(() => {
-
-        console.log('yooo')
-
-    }, [])
 
     return (
-        <Container>
-            <ImgSlider />
-            <MainViewer />
-            <Movies fetchUrl={requests.fetchComedyMovies} />
-            <Row title="Disney New" fetchUrl={requests.fetchTrending} />
-            <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
-            <Row title="Comedy New" fetchUrl={requests.fetchComedyMovies} />
-            <Row title="Romance New" fetchUrl={requests.fetchRomanceMovies} />
-            <Row title="Documentaries New" fetchUrl={requests.fetchDocumantaries} />
-        </Container>
+        <>
+            <Container>
+                <ImgSlider />
+                {/* {user && */}
+                {/* <> */}
+                <MainViewer />
+                {/* <h1>HI {user.email}</h1> */}
+
+                <Movies fetchUrl={requests.fetchComedyMovies} />
+                {/* <h1>{user.password} baretosss</h1> */}
+                <Row title="Disney New" fetchUrl={requests.fetchTrending} />
+                <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
+                <Row title="Comedy New" fetchUrl={requests.fetchComedyMovies} />
+                <Row title="Romance New" fetchUrl={requests.fetchRomanceMovies} />
+                <Row title="Documentaries New" fetchUrl={requests.fetchDocumantaries} />
+                {/* </> */}
+                {/* } */}
+
+            </Container>
+        </>
     )
 }
 
